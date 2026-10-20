@@ -1,0 +1,635 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>โหวตทริปแก๊งเรา</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+/* Layout: a green meridian-line hero over a white page; four big pick tiles in a 2x2 grid, live ranking underneath, sticky submit bar. */
+:root {
+  --font-display: "Bai Jamjuree", "Noto Sans Thai", "Tahoma", sans-serif;
+  --font-body: "Noto Sans Thai", "Sarabun", "Tahoma", system-ui, sans-serif;
+  --bg: #fbfefc;
+  --surface: #ffffff;
+  --surface-2: #eef8f2;
+  --ink: #0f2a23;
+  --ink-soft: #4a695f;
+  --line: #d3e8de;
+  --green: #087a59;
+  --green-deep: #05503c;
+  --mint: #e1f4ea;
+  --mint-2: #bfe6d2;
+  --on-green: #ffffff;
+  --hero-bg: #087a59;
+  --hero-ink: #ffffff;
+  --hero-soft: #d5f2e5;
+  --hero-line: rgba(255, 255, 255, 0.22);
+  --warn: #9a4a00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #09161a;
+    --surface: #0f2428;
+    --surface-2: #123037;
+    --ink: #e8f6f0;
+    --ink-soft: #9fc0b4;
+    --line: #1f4540;
+    --green: #38d3a3;
+    --green-deep: #8fe9ca;
+    --mint: #143a36;
+    --mint-2: #1d5a4c;
+    --on-green: #04241b;
+    --hero-bg: #0d3a31;
+    --hero-ink: #effaf5;
+    --hero-soft: #a9d9c8;
+    --hero-line: rgba(143, 233, 202, 0.2);
+    --warn: #f0b36a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #09161a;
+  --surface: #0f2428;
+  --surface-2: #123037;
+  --ink: #e8f6f0;
+  --ink-soft: #9fc0b4;
+  --line: #1f4540;
+  --green: #38d3a3;
+  --green-deep: #8fe9ca;
+  --mint: #143a36;
+  --mint-2: #1d5a4c;
+  --on-green: #04241b;
+  --hero-bg: #0d3a31;
+  --hero-ink: #effaf5;
+  --hero-soft: #a9d9c8;
+  --hero-line: rgba(143, 233, 202, 0.2);
+  --warn: #f0b36a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.2; }
+p { margin: 0; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+
+/* hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-ink);
+}
+.hero svg.mer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: var(--hero-line);
+  fill: none;
+  stroke-width: 1.2;
+  pointer-events: none;
+}
+.hero .wrap { position: relative; padding-top: 40px; padding-bottom: 36px; display: grid; gap: 16px; }
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  color: var(--hero-soft);
+  text-transform: uppercase;
+}
+.hero h1 { font-size: clamp(2.1rem, 8vw, 3.6rem); font-weight: 700; }
+.hero .lead { max-width: 52ch; color: var(--hero-soft); font-size: 1.05rem; }
+.hero .lead b { color: var(--hero-ink); font-weight: 600; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.facts li {
+  border: 1px solid var(--hero-line);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* sections */
+main { display: grid; gap: 40px; padding-block: 32px 24px; }
+.sec-head { display: grid; gap: 4px; margin-bottom: 16px; }
+.sec-head h2 { font-size: 1.5rem; font-weight: 700; }
+.sec-head p { color: var(--ink-soft); }
+
+.who { display: grid; gap: 6px; max-width: 420px; }
+.who label { font-weight: 600; }
+.who input {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.who input:focus-visible { border-color: var(--green); outline-offset: 1px; }
+.who small { color: var(--ink-soft); }
+
+/* option tiles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.opt {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  min-width: 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.opt[data-on="true"] { border-color: var(--green); box-shadow: 0 0 0 2px var(--green); }
+.pick {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 18px 18px 8px;
+  cursor: pointer;
+  border-radius: 16px 16px 0 0;
+}
+.opt[data-locked="true"] .pick { cursor: not-allowed; opacity: 0.55; }
+.num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.1ch;
+}
+.pick .txt { display: grid; gap: 2px; min-width: 0; }
+.pick .t { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.25; }
+.pick .s { color: var(--ink-soft); }
+.zone {
+  justify-self: start;
+  margin-top: 8px;
+  background: var(--mint);
+  color: var(--green-deep);
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.tick {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  flex: none;
+}
+.tick svg { width: 16px; height: 16px; }
+.opt[data-on="true"] .tick { background: var(--green); border-color: var(--green); color: var(--on-green); }
+.vibe { padding: 4px 18px 14px; color: var(--ink-soft); font-size: 0.95rem; }
+details { border-top: 1px solid var(--line); }
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 18px;
+  font-weight: 600;
+  color: var(--green-deep);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.4; }
+details[open] summary::after { content: "–"; }
+.venues { list-style: none; margin: 0; padding: 0 18px 8px; display: grid; gap: 0; }
+.venues li { padding: 12px 0; border-top: 1px dashed var(--line); display: grid; gap: 2px; }
+.venues li:first-child { border-top: 0; }
+.v-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; align-items: baseline; }
+.v-name { font-weight: 600; min-width: 0; }
+.v-price { font-family: var(--font-display); font-weight: 600; color: var(--green-deep); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.v-desc { color: var(--ink-soft); font-size: 0.93rem; }
+.v-place { color: var(--green-deep); font-size: 0.85rem; font-weight: 600; }
+.split-note { padding: 0 18px 14px; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* results */
+.results { background: var(--surface-2); border-radius: 20px; padding: 24px 20px; display: grid; gap: 20px; }
+.status { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: space-between; }
+.status .count { font-family: var(--font-display); font-weight: 600; font-variant-numeric: tabular-nums; }
+.leader {
+  background: var(--green);
+  color: var(--on-green);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+.leader.tie { background: var(--surface); color: var(--ink); border: 1.5px dashed var(--green); }
+.rank { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.row { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; }
+.row .pos { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--green); text-align: center; font-variant-numeric: tabular-nums; }
+.row .name { font-weight: 600; min-width: 0; }
+.row .name span { color: var(--ink-soft); font-weight: 400; font-size: 0.9rem; margin-left: 6px; }
+.row .n { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.bar { grid-column: 2 / 4; height: 12px; background: var(--mint-2); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 99px; transition: width 0.5s ease; }
+.voters { grid-column: 2 / 4; display: flex; flex-wrap: wrap; gap: 6px; }
+.voters span { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 0 10px; font-size: 0.85rem; }
+.row.fourth { opacity: 0.7; }
+.row.fourth .pos { font-size: 1.1rem; color: var(--ink-soft); }
+.empty { color: var(--ink-soft); }
+.note { color: var(--warn); font-size: 0.92rem; }
+
+/* sticky bar */
+.bar-submit {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 5;
+}
+.bar-submit .wrap { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.picked { min-width: 0; }
+.picked b { font-family: var(--font-display); font-variant-numeric: tabular-nums; }
+.picked small { display: block; color: var(--ink-soft); }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.go {
+  background: var(--green);
+  color: var(--on-green);
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 26px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.go:disabled { opacity: 0.45; cursor: not-allowed; }
+.ghost {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.msg { min-height: 1.5em; font-weight: 600; color: var(--green-deep); }
+.msg.err { color: var(--warn); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar i, .opt { transition: none; }
+}
+</style>
+
+<header class="hero">
+  <svg class="mer" viewBox="0 0 900 340" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <g>
+      <ellipse cx="720" cy="170" rx="40" ry="300"/>
+      <ellipse cx="720" cy="170" rx="120" ry="300"/>
+      <ellipse cx="720" cy="170" rx="210" ry="300"/>
+      <ellipse cx="720" cy="170" rx="300" ry="300"/>
+      <line x1="420" y1="170" x2="1020" y2="170"/>
+      <path d="M440 90 Q720 120 1000 90"/>
+      <path d="M440 250 Q720 220 1000 250"/>
+      <path d="M470 40 Q720 70 970 40"/>
+      <path d="M470 300 Q720 270 970 300"/>
+      <line x1="720" y1="-20" x2="720" y2="360"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow">ทริปแก๊งเรา · พฤศจิกายน</p>
+    <h1>พวกแกอยากไปเป็นทรงไหน!?</h1>
+    <p class="lead">โหวต <b>สไตล์ทริปที่ชอบที่สุด</b> เลือกได้ 1–2 ข้อ ข้อไหนโหวตเยอะสุด เราไปจังหวัดตามนั้น</p>
+    <ul class="facts">
+      <li>ที่พักคนละ 1,500–2,000 บาท/คืน</li>
+      <li>พูลวิลล่าสระส่วนตัว</li>
+      <li>ปาร์ตี้ได้ ไม่ลำบาก</li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="h-vote">
+    <div class="sec-head">
+      <h2 id="h-vote">เลือกสไตล์ที่ใช่</h2>
+      <p>แตะการ์ดเพื่อเลือก แตะอีกครั้งเพื่อยกเลิก กดดูพูลวิลล่าที่เล็งไว้ได้ในแต่ละข้อ</p>
+    </div>
+    <div class="who">
+      <label for="nick">ชื่อเล่นของแก</label>
+      <input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="เช่น มิ้นท์, เบียร์, บอส">
+      <small>ชื่อนี้จะโชว์ในผลโหวตให้เพื่อนเห็น</small>
+    </div>
+    <div class="grid" id="grid" style="margin-top:20px"></div>
+  </section>
+
+  <section class="results" aria-labelledby="h-res" aria-live="polite">
+    <div class="sec-head" style="margin:0">
+      <h2 id="h-res">ผลโหวตตอนนี้</h2>
+    </div>
+    <div class="status">
+      <span class="count" id="count">กำลังเชื่อมต่อ…</span>
+      <span class="note" id="mode"></span>
+    </div>
+    <div id="leader"></div>
+    <ol class="rank" id="rank"></ol>
+  </section>
+</main>
+
+<div class="bar-submit">
+  <div class="wrap">
+    <div class="picked">
+      <span>เลือกแล้ว <b id="n">0</b>/2</span>
+      <small class="msg" id="msg" role="status"></small>
+    </div>
+    <div class="btns">
+      <button class="ghost" id="clear" type="button" hidden>ถอนโหวต</button>
+      <button class="go" id="send" type="button" disabled>ส่งโหวต</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CATS = [
+    { id: 1, title: "สายปาร์ตี้ตัวตึง", tag: "เน้นแสงสี ซีฟู้ดจุกๆ", zone: "พัทยา / ระยอง", short: "พัทยา / ระยอง",
+      vibe: "เหมาะกับแก๊งที่ชอบตื่นสาย แฮงค์เอาท์ริมสระ เปิดเพลงเต้นได้ยันดึก ค่ำๆ ออกไปหาคาเฟ่ริมทะเลหรือตกหมึก",
+      split: "หาร 10–12 คน",
+      venues: [
+        { n: "Hollywood Pool Villa", p: "พัทยา", d: "บ้านหลังใหญ่ มีไฟเธค โต๊ะพูล คาราโอเกะครบชุด สระว่ายน้ำใหญ่มาก", c: "~1,500" },
+        { n: "Oxygen Pool Villa", p: "พัทยา", d: "ดีไซน์โมเดิร์นหรูหรา มุมถ่ายรูปเยอะมาก สระกระจกใสปิ๊ง", c: "~1,800" },
+        { n: "บ้านแอมวา พูลวิลล่า (ใกล้แหลมแม่พิมพ์)", p: "ระยอง", d: "สายชิลติดทะเล เดินไปหาดได้เลย มีสระส่วนตัว ปิ้งย่างซีฟู้ดริมสระ", c: "~1,200–1,500" }
+      ] },
+    { id: 2, title: "สายรักธรรมชาติ คุณหนูดูแพง", tag: "ปาร์ตี้บาร์บีคิว", zone: "เขาใหญ่ / ราชบุรี", short: "เขาใหญ่ / ราชบุรี",
+      vibe: "เหมาะกับแก๊งที่ชอบอากาศดีๆ วิวภูเขา ถ่ายรูปสวยๆ ใส่ชุดเดรสฟีลลูกคุณหนู จิบไวน์ ทำบาร์บีคิวรอบกองไฟ",
+      split: "หาร 10–12 คน",
+      venues: [
+        { n: "Khaoyai Valley Pool Villa", p: "เขาใหญ่", d: "บ้านสไตล์นอร์ดิกวิวภูเขาพาโนรามา สระน้ำอุ่น มีลานผิงไฟและโซนปิ้งย่าง", c: "~1,600" },
+        { n: "บ้านภูไพรเวท เขาใหญ่", p: "เขาใหญ่", d: "วิลล่าสุดร่มรื่น สไตล์แคมป์ปิ้งนิดๆ แต่ของใช้ไฮโซครบเซ็ต", c: "~1,800" },
+        { n: "La Toscana ภูผา พูลวิลล่า", p: "ราชบุรี", d: "วิลล่ากลิ่นอายอิตาลี สไตล์ยุโรป ถ่ายรูปมุมไหนก็ปัง พื้นที่กว้างมาก", c: "~1,900" }
+      ] },
+    { id: 3, title: "สายลุยเบาๆ กิจกรรมแน่น", tag: "เน้นฮา", zone: "นครนายก / กาญจนบุรี", short: "นครนายก / กาญจนบุรี",
+      vibe: "เหมาะกับแก๊งที่อยู่ไม่นิ่ง ชอบเล่นน้ำตก ล่องแพ ขับ ATV เล่นเกมทำโทษกันฮาๆ แต่พอกลับที่พักต้องนอนแอร์เย็นฉ่ำ",
+      split: "หาร 10–12 คน",
+      venues: [
+        { n: "Nature Pool Villa", p: "นครนายก", d: "บ้านพักท่ามกลางต้นไม้ร่มรื่น สระว่ายน้ำใหญ่ ใกล้จุดล่องแก่งและ ATV (หาร 10 คน)", c: "~1,200–1,500" },
+        { n: "นอนเล่น NL2 พูลวิลล่า", p: "นครนายก", d: "บ้านใหม่ สไตล์มินิมอลมูจิ มีสไลเดอร์และห่วงยางแฟนซี", c: "~1,200" },
+        { n: "The FloatHouse / แพลอยน้ำแบบเหมาหลัง (ไทรโยค)", p: "กาญจนบุรี", d: "ไม่ใช่พูลวิลล่าบนบก แต่เป็นแพแอร์วีไอพี กระโดดน้ำจากหน้าห้องได้เลย (หาร 10 คน)", c: "~1,800–2,000" }
+      ] },
+    { id: 4, title: "สายติดเกาะ หนีความวุ่นวาย", tag: "ไพรเวทสุดๆ", zone: "ตราด / เกาะช้าง", short: "ตราด / เกาะช้าง",
+      vibe: "เหมาะกับแก๊งที่พร้อมเดินทางไกลนิดนึงเพื่อแลกกับความไพรเวทสุดๆ ดำน้ำ ดูโชว์ไฟ กินอาหารทะเล",
+      split: "หาร 10–12 คน",
+      venues: [
+        { n: "Siam Royal View Pool Villa (เกาะช้าง)", p: "", d: "หมู่บ้านพูลวิลล่าระดับไฮเอนด์ติดหาด คลองพร้าว สระส่วนตัววิวทะเล", c: "~1,800" },
+        { n: "Marina Sands Resort (เหมาวิลล่า)", p: "", d: "สไตล์ทรอปิคอล มีท่าจอดเรือยอร์ช ถ่ายรูปปังมาก", c: "~1,900" },
+        { n: "The Emerald Cove (โซนวิลล่า)", p: "", d: "บริการระดับโรงแรม 5 ดาว แต่ได้ความเป็นส่วนตัวแบบวิลล่า", c: "~2,000" }
+      ] }
+  ];
+  var MAX_PICKS = 2;
+  var CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var el = { grid: $("grid"), nick: $("nick"), n: $("n"), send: $("send"), clear: $("clear"), msg: $("msg"),
+    count: $("count"), mode: $("mode"), leader: $("leader"), rank: $("rank") };
+
+  var db = null, uid = null, canWrite = true;
+  var mode = "connecting"; // connecting | shared | local
+  var sel = [];            // ids picked in the UI
+  var saved = null;        // picks stored for this viewer
+  var votes = [];          // [{id, picks, nick}]
+  var touched = false;
+
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+  function cat(id) { return CATS.filter(function (c) { return c.id === id; })[0]; }
+  function cleanPicks(p) {
+    if (!Array.isArray(p)) return [];
+    var out = [];
+    p.forEach(function (x) { if (typeof x === "number" && cat(x) && out.indexOf(x) < 0) out.push(x); });
+    return out.slice(0, MAX_PICKS).sort();
+  }
+  function say(t, err) { el.msg.textContent = t || ""; el.msg.className = "msg" + (err ? " err" : ""); }
+
+  /* build tiles */
+  CATS.forEach(function (c) {
+    var a = document.createElement("article");
+    a.className = "opt"; a.setAttribute("data-id", c.id); a.setAttribute("data-on", "false"); a.setAttribute("data-locked", "false");
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "pick"; b.setAttribute("aria-pressed", "false");
+    b.innerHTML = '<span class="num"></span><span class="txt"><span class="t"></span><span class="s"></span><span class="zone"></span></span><span class="tick">' + CHECK + '</span>';
+    b.querySelector(".num").textContent = c.id;
+    b.querySelector(".t").textContent = c.title;
+    b.querySelector(".s").textContent = c.tag;
+    b.querySelector(".zone").textContent = c.zone;
+    b.addEventListener("click", function () { toggle(c.id); });
+    var v = document.createElement("p"); v.className = "vibe"; v.textContent = c.vibe;
+    var d = document.createElement("details");
+    var s = document.createElement("summary"); s.textContent = "ดูพูลวิลล่าที่เล็งไว้ " + c.venues.length + " ที่";
+    var ul = document.createElement("ul"); ul.className = "venues";
+    c.venues.forEach(function (x, i) {
+      var li = document.createElement("li");
+      var top = document.createElement("div"); top.className = "v-top";
+      var nm = document.createElement("span"); nm.className = "v-name"; nm.textContent = "ตัวเลือกที่ " + (i + 1) + " · " + x.n;
+      var pr = document.createElement("span"); pr.className = "v-price"; pr.textContent = x.c + " บาท/คน";
+      top.appendChild(nm); top.appendChild(pr);
+      li.appendChild(top);
+      if (x.p) { var pl = document.createElement("span"); pl.className = "v-place"; pl.textContent = x.p; li.appendChild(pl); }
+      var ds = document.createElement("span"); ds.className = "v-desc"; ds.textContent = x.d; li.appendChild(ds);
+      ul.appendChild(li);
+    });
+    var sp = document.createElement("p"); sp.className = "split-note"; sp.textContent = "ราคาต่อคนต่อคืน " + c.split + " ตามที่ตกลงกันไว้";
+    d.appendChild(s); d.appendChild(ul); d.appendChild(sp);
+    a.appendChild(b); a.appendChild(v); a.appendChild(d);
+    el.grid.appendChild(a);
+  });
+
+  function toggle(id) {
+    var i = sel.indexOf(id);
+    if (i >= 0) { sel.splice(i, 1); touched = true; say(""); }
+    else if (sel.length >= MAX_PICKS) { say("เลือกได้ไม่เกิน 2 ข้อ ยกเลิกข้อใดข้อหนึ่งก่อนนะ", true); return; }
+    else { sel.push(id); sel.sort(); touched = true; say(""); }
+    paintTiles();
+  }
+
+  function paintTiles() {
+    Array.prototype.forEach.call(el.grid.children, function (a) {
+      var id = Number(a.getAttribute("data-id"));
+      var on = sel.indexOf(id) >= 0;
+      a.setAttribute("data-on", on ? "true" : "false");
+      a.setAttribute("data-locked", !on && sel.length >= MAX_PICKS ? "true" : "false");
+      a.querySelector(".pick").setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    el.n.textContent = sel.length;
+    el.send.disabled = sel.length === 0 || !canWrite;
+    el.send.textContent = saved && saved.length ? "อัปเดตโหวต" : "ส่งโหวต";
+    el.clear.hidden = !(saved && saved.length);
+  }
+
+  /* results */
+  function tally() {
+    var counts = {}, who = {};
+    CATS.forEach(function (c) { counts[c.id] = 0; who[c.id] = []; });
+    votes.forEach(function (v) {
+      cleanPicks(v.picks).forEach(function (id) { counts[id]++; who[id].push(v.nick || "ไม่ระบุชื่อ"); });
+    });
+    return { counts: counts, who: who };
+  }
+
+  function paintResults() {
+    var t = tally();
+    var voters = votes.filter(function (v) { return cleanPicks(v.picks).length; }).length;
+    el.count.textContent = mode === "connecting" ? "กำลังเชื่อมต่อ…" : "มีคนโหวตแล้ว " + voters + " คน";
+    el.mode.textContent = mode === "local" ? "โหมดเครื่องเดียว: เห็นเฉพาะโหวตของแกบนเครื่องนี้ ยังไม่รวมคะแนนเพื่อน"
+      : (!canWrite && mode === "shared" ? "บัญชีนี้ดูผลได้อย่างเดียว ขอให้เจ้าของตั้งสิทธิ์เป็น Contributor เพื่อโหวต" : "");
+
+    var order = CATS.slice().sort(function (a, b) { return t.counts[b.id] - t.counts[a.id] || a.id - b.id; });
+    var top = t.counts[order[0].id];
+    el.leader.textContent = "";
+    if (top > 0) {
+      var leaders = order.filter(function (c) { return t.counts[c.id] === top; });
+      var box = document.createElement("div");
+      if (leaders.length === 1) {
+        box.className = "leader";
+        box.textContent = "ตอนนี้ไปทาง " + leaders[0].short + " (" + leaders[0].title + ")";
+      } else {
+        box.className = "leader tie";
+        box.textContent = "เสมอกันอยู่ " + leaders.length + " สไตล์ รอเพื่อนที่ยังไม่โหวตช่วยตัดสิน";
+      }
+      el.leader.appendChild(box);
+    }
+
+    el.rank.textContent = "";
+    if (voters === 0) {
+      var li0 = document.createElement("li"); li0.className = "empty";
+      li0.textContent = "ยังไม่มีใครโหวต เลือกการ์ดด้านบนแล้วกดส่งโหวตเป็นคนแรกเลย";
+      el.rank.appendChild(li0);
+      return;
+    }
+    order.forEach(function (c, i) {
+      var li = document.createElement("li"); li.className = "row" + (i === 3 ? " fourth" : "");
+      var pos = document.createElement("span"); pos.className = "pos"; pos.textContent = i + 1;
+      var nm = document.createElement("span"); nm.className = "name";
+      nm.textContent = c.title;
+      var z = document.createElement("span"); z.textContent = c.short; nm.appendChild(z);
+      var n = document.createElement("span"); n.className = "n"; n.textContent = t.counts[c.id];
+      var bar = document.createElement("div"); bar.className = "bar";
+      var fill = document.createElement("i");
+      bar.appendChild(fill);
+      li.appendChild(pos); li.appendChild(nm); li.appendChild(n); li.appendChild(bar);
+      if (t.who[c.id].length) {
+        var vs = document.createElement("div"); vs.className = "voters";
+        t.who[c.id].forEach(function (name) { var s = document.createElement("span"); s.textContent = name; vs.appendChild(s); });
+        li.appendChild(vs);
+      }
+      el.rank.appendChild(li);
+      var pct = top > 0 ? Math.round(t.counts[c.id] / top * 100) : 0;
+      requestAnimationFrame(function () { fill.style.width = pct + "%"; });
+    });
+  }
+
+  function paintAll() { paintTiles(); paintResults(); }
+
+  /* local (single device) mode */
+  function loadLocal() {
+    try {
+      var raw = lsGet("tripvote.local");
+      if (raw) { var o = JSON.parse(raw); saved = cleanPicks(o.picks); votes = [{ id: "me", picks: saved, nick: o.nick || "" }]; if (!touched) { sel = saved.slice(); if (o.nick && !el.nick.value) el.nick.value = o.nick; } }
+    } catch (e) {}
+  }
+
+  /* actions */
+  el.nick.addEventListener("input", function () { touched = true; });
+
+  el.send.addEventListener("click", async function () {
+    var picks = sel.slice().sort();
+    var name = el.nick.value.trim().slice(0, 20);
+    if (!picks.length) return;
+    if (!name) { say("ใส่ชื่อเล่นก่อนนะ จะได้รู้ว่าใครโหวตอะไร", true); el.nick.focus(); return; }
+    lsSet("tripvote.nick", name);
+    el.send.disabled = true;
+    if (mode === "shared") {
+      try {
+        await db.doc("votes/" + uid).set({ picks: picks, nick: name });
+        touched = false;
+        say("บันทึกโหวตแล้ว แก้ใหม่ได้ตลอด");
+      } catch (e) {
+        if (e && e.code === "invalid_argument") { canWrite = false; say("บัญชีนี้โหวตไม่ได้ ต้องได้สิทธิ์ Contributor ขึ้นไป", true); }
+        else say("ส่งไม่สำเร็จ ลองกดอีกครั้ง", true);
+      }
+    } else {
+      saved = picks; votes = [{ id: "me", picks: picks, nick: name }];
+      lsSet("tripvote.local", JSON.stringify({ picks: picks, nick: name }));
+      touched = false;
+      say("บันทึกโหวตบนเครื่องนี้แล้ว");
+    }
+    paintAll();
+  });
+
+  el.clear.addEventListener("click", async function () {
+    if (mode === "shared") {
+      try { await db.doc("votes/" + uid).delete(); sel = []; saved = null; touched = false; say("ถอนโหวตแล้ว"); }
+      catch (e) { say("ถอนโหวตไม่สำเร็จ ลองอีกครั้ง", true); }
+    } else {
+      lsDel("tripvote.local"); sel = []; saved = null; votes = []; touched = false; say("ถอนโหวตแล้ว");
+    }
+    paintAll();
+  });
+
+  /* start */
+  var remembered = lsGet("tripvote.nick");
+  if (remembered) el.nick.value = remembered;
+  paintAll();
+
+  async function init() {
+    var claude = window.claude;
+    var user = null;
+    try { user = claude && claude.use ? await claude.use("user") : null; } catch (e) { user = null; }
+    try { db = claude && claude.use ? await claude.use("db") : null; } catch (e) { db = null; }
+    if (user) {
+      try { uid = await user.id(); } catch (e) { uid = null; }
+      try {
+        var w = await user.can("data.write");
+        if (w === false) canWrite = false;
+        if (!el.nick.value) { var me = await user.me(); if (me && me.name) el.nick.value = me.name; }
+      } catch (e) {}
+    }
+    if (db && uid) {
+      mode = "shared";
+      db.collection("votes").onSnapshot(function (snap) {
+        votes = snap.docs.map(function (d) { var x = d.data() || {}; return { id: d.id, picks: x.picks, nick: typeof x.nick === "string" ? x.nick.slice(0, 20) : "" }; });
+        var mine = votes.filter(function (v) { return v.id === uid; })[0];
+        saved = mine ? cleanPicks(mine.picks) : null;
+        if (!touched) {
+          sel = saved ? saved.slice() : sel;
+          if (mine && mine.nick) el.nick.value = mine.nick;
+        }
+        paintAll();
+      }, function () {
+        mode = "local"; loadLocal(); paintAll();
+      });
+      paintAll();
+    } else {
+      mode = "local"; canWrite = true; loadLocal(); paintAll();
+    }
+  }
+  init();
+})();
+</script>
+
+</body></html>
